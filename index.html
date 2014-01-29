@@ -1,0 +1,791 @@
+<!DOCTYPE HTML>
+<html> 
+	<head> 
+		<title>Widget Factory</title> 
+
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/> 
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-switch.css"/> 
+		<link rel="stylesheet" type="text/css" href="css/main.css"/> 
+		<link rel="stylesheet" type="text/css" href="css/layouts.css"/>
+
+		<style type="text/css">
+			.pane {
+				display:	none; /* will appear when layout inits */
+			}
+
+		</style>
+
+	</head>
+
+	<body>
+		<div class="page_header">
+			<div class="logo">
+				<img src="img/logo_header.png"/>
+			</div>
+		</div>
+		
+		<img class="thumbnail"/>
+
+		<div class="page_container">
+			
+			<div class="page_section">
+				<div class="page_step step"><h2>Welcome to the Backbase Widget Builder!</h2></div>
+				<div class="page_step step"><h2>Let's Begin!</h2></div>
+				<div class="page_step step"><h2>Now let's add some preferences...</h2></div>
+				<div class="page_step step"><h2>Now give it a pretty icon.<small> Note: Don't worry about the sizing, I got you ;)</small></h2></div>
+				<div class="page_step step">
+					<h2>You should probably choose a chrome too.</h2><br/>
+					<h4>What's a pretty picture without a nice frame?</h4>
+				</div>
+				<div class="page_step step"><h2>OK Genius, what JS Libraries you wanna include?</h2></div>
+				<div class="page_step step"><h2>Let's edit the default source code.</h2></div>
+				<div class="page_step step"><h2>Let's build this thing! <small>  Note: Add a ".zip" at the end of the filename in the dialog window</small></h2></div>
+				<div class="page_step step"><h2>Click this button to build another one!</h2></div>
+				<div class="page_step step"><h2>Where does your portal live?</h2></div>
+				<div class="page_step step"><h2>Now add your <i>widget.zip</i> file</h2></div>
+				<div class="page_step step"><h2>Upload!</h2></div>
+				<div class="page_step step"><h2>Where does your portal live?</h2></div>
+				<div class="page_step step"><h2>Now add your <i>template.zip</i> file</h2></div>
+				<div class="page_step step"><h2>Upload!</h2></div>
+			</div>
+
+			<div class="divider"></div>
+
+			<div class="page page_step step">
+				<div class="container_summary">
+					<div class="btn btn-success btn-next btn-start" name="start">
+						<span class="image_holder glyphicon glyphicon-wrench"></span>
+					</div>
+					<div class="btn btn-success btn-next btn-uploadWidget" name="upload">
+						<span class="image_holder glyphicon glyphicon-export"></span>
+					</div>
+					<div class="btn btn-success btn-next btn-uploadTemplate" name="upload">
+						<span class="image_holder glyphicon glyphicon-picture"></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="page page_step step container">
+				<form role="form" class="form-horizontal widgetProps">
+					<div class="form-group">
+						<label class="col-lg-2 control-label" for="widget_name">Author</label>
+						<div class="col-lg-8">
+							<input class="form-control" id="widget_author" placeholder="Enter your name here"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-2 control-label" for="widget_name">Widget Name</label>
+						<div class="col-lg-10">
+							<input class="form-control" id="widget_name" placeholder="Enter Widget Name"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-2 control-label" for="widget_name">Bundle Name</label>
+						<div class="col-lg-10">
+							<input class="form-control" id="widget_bundle" placeholder="yourcompany.com.year.somegrouping"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="widget_name">Description</label>
+						<textarea class="form-control" id="widget_description" rows="3"></textarea>
+					</div>
+				</form>
+				<div class="container_bottom">
+					<div class="divider"></div>
+					<div class="container_navigation">
+						<div class="btn btn-primary btn-prev">Back</div>
+						<div class="btn btn-primary btn-next disabled">Next</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Preference Creator -->
+			<div class="page page_step step">
+				<div class="container_preferences">
+
+					<form class="form-inline" role="form">
+						<div class="form-group">
+							<input type="text" class="preference_label" placeholder="Label"/>
+						</div>
+						<div class="form-group">
+							<input type="text" class="preference_name" placeholder="Name"/>
+						</div>
+						<div class="form-group">
+							<select class="form-control preference_type">
+								<option>text</option>
+								<option>password</option>
+								<option>textarea</option>
+								<option>checkbox</option>
+								<option>radio</option>
+								<option>range</option>
+								<option>select-one</option>
+								<option>select-many</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<select class="form-control preference_role" multiple>
+								<option selected="selected">user</option>
+								<option>manager</option>
+								<option>admin</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<input type="text" class="preference_default" placeholder="Default Value"/>
+						</div>
+						<div class="btn btn-xs btn-primary disabled preference_details"><span class="glyphicon glyphicon-pencil"></span></div>
+						<div class="form-group">
+							<label>
+								<input class="preference_designMode" type="checkbox" value=""/> Design Mode
+							</label>
+						</div>
+						<div class="hiddenPrefVal">
+							<input type="text" class="preference_rangeLow" name="hidden" value=""/>
+							<input type="text" class="preference_rangeHigh" name="hidden" value=""/>
+							<input type="text" class="preference_step" name="hidden" value=""/>
+						</div>
+						<div class="btn btn-xs btn-danger preference_delete disabled"><span class="glyphicon glyphicon-remove"></span></div>
+						<div class="btn btn-xs btn-success preference_add"><span class="glyphicon glyphicon-ok-sign"></span></div>
+						<div class="enumerations">
+							<div class="enum">
+								<div class="form-group">
+									<input type="text" class="enum_label" placeholder="Label"/>
+								</div>
+								<div class="form-group">
+									<input type="text" class="enum_value" placeholder="Value"/>
+								</div>
+								<div class="btn btn-xs btn-danger preference_enum_delete disabled"><span class="glyphicon glyphicon-remove"></span></div>
+								<div class="btn btn-xs btn-success preference_enum_add"><span class="glyphicon glyphicon-ok-sign"></span></div>
+							</div>
+						</div>
+					</form>	
+				</div>
+				<div class="container_bottom">
+					<div class="divider"></div>
+					<div class="container_navigation">
+						<div class="btn btn-primary btn-prev">Back</div>
+						<div class="btn btn-primary btn-next">Next</div>
+					</div>
+				</div>
+			</div>
+			<!-- Put image uploader here -->
+			<div class="page page_step step">
+				<div class="container_icon">
+					<span id="thumbnail" class="image_holder glyphicon glyphicon-circle-arrow-up">
+					</span>
+					<canvas id="myCanvas" width="87" height="63">
+				</div>
+				<div class="container_bottom">
+					<div class="divider"></div>
+					<div class="container_navigation">
+						<div class="btn btn-primary btn-prev">Back</div>
+						<div class="btn btn-primary btn-next">Next</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Chose the chrome you want -->
+			<div class="page page_step step">
+				<div class="container_chromes">
+					
+				</div>
+				<div class="container_bottom">
+					<div class="divider"></div>
+					<div class="container_navigation">
+
+						<div class="btn btn-primary btn-prev">Back</div>
+						<div class="btn btn-primary btn-next">Next</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Choose the library -->
+			<div class="page page_step step">
+				<div class="container_libraries">
+					
+				</div>
+				<div class="container_bottom">
+					<div class="divider"></div>
+					<div class="container_navigation">
+						<div class="btn btn-primary btn-prev">Back</div>
+						<div class="btn btn-primary btn-next">Next</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Let's edit this bad boy -->
+			<div class="page page_step step">
+				<div id="container">
+					
+					<div class="pane ui-layout-center" id="widget_js"></div>
+					<div class="pane ui-layout-south" id="widget_html"></div>
+					<div class="pane ui-layout-east" id="widget_css"></div>
+				</div>
+
+				<div class="container_bottom">
+					<div class="divider"></div>
+					<div class="container_navigation">
+						<div class="btn btn-success btn-windowTest">
+							Run Widget
+						</div>
+						<div class="btn btn-primary btn-prev">Back</div>
+						<div class="btn btn-primary btn-next">Next</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Build Files -->
+			<div class="page page_step step">
+				<div class="container_summary">
+					<div class="btn btn-success btn-done" name="start">
+						<span id="download" class="image_holder glyphicon glyphicon-floppy-save"></span>
+					</div>
+				</div>
+				<div class="container_bottom">
+					<div class="divider"></div>
+					<div class="container_navigation">
+						<div class="btn btn-warning btn-prev">Back</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Complete -->
+			<div class="page page_step step">
+				<div class="container_summary">
+					<div class="btn btn-success btn-restart" name="start">
+						<span id="download" class="image_holder glyphicon glyphicon-refresh"></span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Widget Upload/Register Start -->
+			<div class="page page_step step container">
+				<div class="container_preferences">
+					<form role="form" class="form-horizontal uploadProps">
+						<div class="form-group">
+							<label class="col-lg-2 control-label" for="portalserverurl">Portal Server URL</label>
+							<div class="col-lg-8">
+								<input class="form-control" id="portalserverurl" placeholder="http://www.yourwebsite.com/portalcontexturl"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-2 control-label" for="portalserverUsername">Portal Admin Username</label>
+							<div class="col-lg-10">
+								<input class="form-control" id="portalserverUsername" placeholder="Username"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-2 control-label" for="portalserverPassword">Portal Admin Password</label>
+							<div class="col-lg-10">
+								<input class="form-control" id="portalserverPassword" placeholder="Password"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-2 control-label" for="register">Register widget too?</label>
+							<div class="col-lg-10">
+								<div class="make-switch switch-large">
+								    <input type="checkbox" class="registerBoolean">
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="container_bottom">
+					<div class="divider"></div>
+					<div class="container_navigation">
+						<div class="btn btn-primary btn-prev">Back</div>
+						<div class="btn btn-primary btn-next disabled">Next</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Add file -->
+			<div class="page page_step step">
+				<div class="container_zip">
+					<input type="file" id="file" name="file" multiple />
+					<span id="widgetZip" class="image_holder glyphicon glyphicon-cloud-upload">
+					</span>
+				</div>
+				<div class="container_bottom">
+					<div class="divider"></div>
+					<div class="container_navigation">
+						<div class="btn btn-primary btn-prev">Back</div>
+						<div class="btn btn-success btn-upload">UPLOAD!</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Upload Complete! -->
+			<!-- Complete -->
+			<div class="page page_step step">
+				<div class="container_summary">
+					<div class="btn btn-success btn-restart" name="start">
+						<span id="download" class="image_holder glyphicon glyphicon-refresh"></span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Begin Template Upload Wizard -->
+			<!-- Widget Upload/Register Start -->
+			<div class="page page_step step container">
+				<div class="container_preferences">
+					<form role="form" class="form-horizontal uploadTemplateProps">
+						<div class="form-group">
+							<label class="col-lg-2 control-label" for="portalserverurl">Portal Server URL</label>
+							<div class="col-lg-8">
+								<input class="form-control" id="portalserverurl2" placeholder="http://www.yourwebsite.com/portalcontexturl"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-2 control-label" for="portalserverUsername">Portal Admin Username</label>
+							<div class="col-lg-10">
+								<input class="form-control" id="portalserverUsername2" placeholder="Username"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-2 control-label" for="portalserverPassword">Portal Admin Password</label>
+							<div class="col-lg-10">
+								<input class="form-control" id="portalserverPassword2" placeholder="Password"/>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="container_bottom">
+					<div class="divider"></div>
+					<div class="container_navigation">
+						<div class="btn btn-primary btn-prev">Back</div>
+						<div class="btn btn-primary btn-next disabled">Next</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="page page_step step container">
+				<form role="form" class="form-horizontal templateProps">
+					<div class="form-group">
+						<label class="col-lg-2 control-label" for="template_author">Author</label>
+						<div class="col-lg-8">
+							<input class="form-control" id="template_author" placeholder="Enter your name here"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-2 control-label" for="template_name">Template Name</label>
+						<div class="col-lg-10">
+							<input class="form-control" id="template_name" placeholder="Enter Template Name"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-2 control-label" for="template_bundle">Bundle Name</label>
+						<div class="col-lg-10">
+							<input class="form-control" id="template_bundle" placeholder="yourcompany.com.year.somegrouping"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="template_devices">Devices</label>
+						<select class="form-control template_device" multiple>
+							<option selected="selected">Desktop</option>
+							<option>Tablet</option>
+							<option>Mobile</option>
+						</select>
+					</div>
+				</form>
+				<div class="container_bottom">
+					<div class="divider"></div>
+					<div class="container_navigation">
+						<div class="btn btn-primary btn-prev">Back</div>
+						<div class="btn btn-primary btn-next disabled">Next</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Add template.zip -->
+			<div class="page page_step step">
+				<div class="container_zip">
+					<input type="file" id="templateFile" name="file" multiple style="display:none"/>
+					<span id="templateZip" class="image_holder glyphicon glyphicon-cloud-upload">
+					</span>
+				</div>
+				<div class="container_bottom">
+					<div class="divider"></div>
+					<div class="container_navigation">
+						<div class="btn btn-primary btn-prev">Back</div>
+						<div class="btn btn-success btn-uploadTemplate">UPLOAD!</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Upload Complete! -->
+			<!-- Complete -->
+			<div class="page page_step step">
+				<div class="container_summary">
+					<div class="btn btn-success btn-restart" name="start">
+						<span id="download" class="image_holder glyphicon glyphicon-refresh"></span>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="modal fade" id="modal_loading_widget">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<p>
+							Loading widget preview...
+						</p>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+		<div class="modal fade" id="modal_error_badLogin">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">
+							Error		
+						</h4>
+					</div>
+					<div class="modal-body">
+						<p>
+							There was an error logging into the portal.<br/>
+							Check your credentials and the portal url.
+						</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+		<div class="modal fade" id="modal_error_badFileUpload">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">
+							Error		
+						</h4>
+					</div>
+					<div class="modal-body">
+						<p>
+							Dude, this is not a <i>.zip</i> file. Pay attention to the instructions and try again!
+						</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+		<div class="modal fade" id="modal_error_badRegister">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">
+							Error		
+						</h4>
+					</div>
+					<div class="modal-body">
+						<p>
+							Something wierd happened during the widget registration.<br/>
+							Check your widget.xml to make sure it's valid.
+						</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+		<div class="modal fade" id="modal_progress_uploadWidget">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">
+							Uploading your widget		
+						</h4>
+					</div>
+					<div class="modal-body">
+						<div class="progress progress-striped active">
+							<div class="progress-bar"  role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+							</div>
+						</div>
+						<div class="upload_progress"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+		<script type="text/html" data-template="chrome_images">
+			{{#images}}
+				<div class="container_chrome" chromeID="{{identifier}}">
+                	<img src="resources/chromes/{{folder_loc}}/{{icon}}" class="image_chrome"/>
+                	<span>{{title}}</span>
+                </div>
+            {{/images}}
+		</script>
+
+		<script type="text/html" data-template="widget_xml">
+			<widgets>
+				<widget>
+					<name>{{identifier}}</name>
+					<contextItemName>[BBHOST]</contextItemName>
+					<properties>
+						<property name="TemplateName">
+				            <value type="string">Standard_Widget</value>
+				         </property> 
+				         <property name="src">
+				            <value type="string">$(contextRoot)/static/{{bundle}}/widgets/{{identifier}}/index.html</value>
+				         </property>
+				         <property name="widgetChrome" label="Widget Chrome">
+				            <value type="string">$(contextRoot)/static/{{bundle}}/widgets/{{identifier}}/chrome/chrome.html</value>
+				         </property>
+				         <property name="thumbnailUrl">
+				            <value type="string">$(contextRoot)/static/{{bundle}}/widgets/{{identifier}}/icon.png</value>
+				         </property>
+				         <property label="Title" name="title" viewHint="text-input,user,designModeOnly">
+				            <value type="string">{{name}}</value>
+				         </property>
+				         <property name="area">
+				            <value type="string">0</value>
+				         </property>
+				         <property name="order">
+				            <value type="double">0.0</value>
+				         </property>
+						{{#preferences}}
+							<property label="{{label}}" name="{{name}}" viewHint="{{roles}}{{designMode}}">
+								<value type="string">{{default}}</value>
+							</property>
+						{{/preferences}}
+					</properties>
+					<tags>
+					</tags>
+				</widget>
+			</widgets>
+		</script>
+
+		<script type="text/html" data-template="template_xml">
+			   <template>
+			      <type>PAGE</type>
+			      <name>{{identifier}}</name>
+			      <contextItemName>[BBHOST]</contextItemName>
+			      <properties>
+			         <property name="thumbnailUrl">
+			            <value type="string">$(contextRoot)/static/backbase.com.2012.aurora/media/bb_bg_pattern.png</value>
+			         </property>
+			         <property name="title">
+			            <value type="string">{{title}}</value>
+			         </property>
+			         <property name="Web">
+			            <value type="string">pages/page_external</value>
+			         </property>
+			         <property name="Tablet">
+			            <value type="string">pages/page_external</value>
+			         </property>
+			         <property name="Smartphone">
+			            <value type="string">pages/page_external</value>
+			         </property>
+			         <property name="BundleName">
+			            <value type="string">backbase.com.2012.aurora</value>
+			         </property>
+			         <property name="headerLocation">
+			            <value type="string">{{headerLocation}}</value>
+			         </property>
+			         <property name="bodyLocation">
+			            <value type="string">{{bodyLocation}}</value>
+			         </property>
+			         <property name="DefaultDevice">
+			            <value type="string">Web</value>
+			         </property>
+			      </properties>
+			      <tags>
+			      		{{#devices}}
+			         		<tag>{{name}}</tag>
+			         	{{/devices}}
+			      </tags>
+			   </template>
+		</script>
+
+		<script type="text/html" data-template="library_images">
+			{{#libraries}}
+				<div class="container_library {{disabled}}" identifier="{{identifier}}">
+                	<img src="resources/libraries/{{folder_loc}}/{{icon}}" class="image_library"/>
+                	<label>
+						<input class="library_includeCSS" {{hasCss}} type="checkbox"/> Use CSS?
+					</label>
+                	<div>{{title}}</div>
+                </div>
+            {{/libraries}}
+		</script>
+
+		<script type="text/html" data-template="preference_field">
+			<form class="form-inline newPreference" role="form">
+				<div class="form-group">
+					<input type="text" class="preference_label" placeholder="Label"/>
+				</div>
+				<div class="form-group">
+					<input type="text" class="preference_name" placeholder="Name"/>
+				</div>
+				<div class="form-group">
+					<select class="form-control preference_type">
+						<option>text</option>
+						<option>password</option>
+						<option>textarea</option>
+						<option>checkbox</option>
+						<option>radio</option>
+						<option>range</option>
+						<option>select-one</option>
+						<option>select-many</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<select class="form-control preference_role" multiple>
+						<option selected="selected">user</option>
+						<option>manager</option>
+						<option>admin</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<input type="text" class="preference_default" placeholder="Default Value"/>
+				</div>
+				<div class="btn btn-xs btn-primary disabled preference_details"><span class="glyphicon glyphicon-pencil"></span></div>
+				<div class="form-group">
+					<label>
+						<input class="preference_designMode" type="checkbox" value=""/> Design Mode
+					</label>
+				</div>
+				<div class="hiddenPrefVal">
+					<input type="text" class="preference_rangeLow" name="hidden" value=""/>
+					<input type="text" class="preference_rangeHigh" name="hidden" value=""/>
+					<input type="text" class="preference_step" name="hidden" value=""/>
+				</div>
+				<div class="btn btn-xs btn-danger preference_delete disabled"><span class="glyphicon glyphicon-remove"></span></div>
+				<div class="btn btn-xs btn-success preference_add"><span class="glyphicon glyphicon-ok-sign"></span></div>
+				<div class="enumerations">
+					<div class="enum">
+						<div class="form-group">
+							<input type="text" class="enum_label" placeholder="Label"/>
+						</div>
+						<div class="form-group">
+							<input type="text" class="enum_value" placeholder="Value"/>
+						</div>
+						<div class="btn btn-xs btn-danger preference_enum_delete disabled"><span class="glyphicon glyphicon-remove"></span></div>
+						<div class="btn btn-xs btn-success preference_enum_add"><span class="glyphicon glyphicon-ok-sign"></span></div>
+					</div>
+				</div>
+			</form>
+		</script>
+
+		<script type="text/html" data-template="preference_enum_setup">
+			<div class="enum new_enum">
+				<div class="form-group">
+					<input type="text" class="enum_label" placeholder="Label"/>
+				</div>
+				<div class="form-group">
+					<input type="text" class="enum_value" placeholder="Value"/>
+				</div>
+				<div class="btn btn-xs btn-danger preference_enum_delete disabled"><span class="glyphicon glyphicon-remove"></span></div>
+				<div class="btn btn-xs btn-success preference_enum_add"><span class="glyphicon glyphicon-ok-sign"></span></div>
+			</div>
+		</script>
+
+		<script type="text/html" data-template="controller_javascript">
+{{identifier}} 				= function(oWidget){
+	this.widget = oWidget;
+	this.init();
+};
+
+{{identifier}}.prototype 		= {};
+{{identifier}}.prototype.init	= function(){
+	
+};
+		</script>
+
+		<script type="text/html" data-template="widget_html">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:g="http://www.backbase.com/2008/gadget" xml:lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/xml; charset=UTF-8"/>
+		<meta name="author" 			content="{{author}}"/>
+		<meta name="description" 		content="{{description}}"/>
+
+		<g:preferences>
+{{#preferences}}
+			<g:preference label="{{label}}" name="{{name}}" type="{{type}}" min="{{rangeLow}}" max="{{rangeHigh}}" step="{{step}}">
+{{#enum}}
+				<g:enumeration label="{{name}}" value="{{sVal}}"></g:enumeration>
+{{/enum}}
+			
+			</g:preference>
+{{/preferences}}
+		
+		</g:preferences>
+		
+		<!-- Controller JS -->
+		<script src="js/{{name}}.js" type="text/javascript"/>
+		
+		<!-- External Libraries -->
+{{#library}}
+{{#externalJS}}
+		<script src="js/{{fileLoc}}" type="text/javascript"/>
+{{/externalJS}}
+
+{{#externalCSS}}
+		<link rel="stylesheet" type="text/css" href="css/{{fileLoc}}"/>
+{{/externalCSS}}
+{{/library}}
+
+		<!-- Widget Styling -->
+		<link rel="stylesheet" type="text/css" href="css/{{name}}.css"/>
+	</head>
+	<body class="{{identifier}}"
+		g:onload="__WIDGET__.controller = new {{identifier}}(__WIDGET__);">
+		<!-- Place Widget View in here. -->
+	</body>
+</html>
+		</script>
+
+
+		<script type="text/xml" data-template="cmis_createFolder">
+			<atom:entry xmlns:atom="http://www.w3.org/2005/Atom" xmlns:cmis="http://docs.oasis-open.org/ns/cmis/core/200908/" xmlns:cmisra="http://docs.oasis-open.org/ns/cmis/restatom/200908/">
+				<atom:id>urn:uuid:{{bundleName}}</atom:id>
+				<atom:title>{{bundleName}}</atom:title>
+				<atom:updated>{{time}}</atom:updated>
+				<cmisra:object xmlns:ns3="http://docs.oasis-open.org/ns/cmis/messaging/200908/">
+					<cmis:properties>
+						<cmis:propertyId propertyDefinitionId="cmis:objectTypeId">
+							<cmis:value>cmis:folder</cmis:value>
+						</cmis:propertyId>
+						<cmis:propertyString propertyDefinitionId="cmis:name">
+							<cmis:value>{{bundleName}}</cmis:value>
+						</cmis:propertyString>
+					</cmis:properties>
+				</cmisra:object>
+			</atom:entry>
+		</script>
+
+		<script type="text/javascript" charset="utf-8" src="resources/chromes/chromeManifest.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="resources/libraries/libraryManifest.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+		<script type="text/javascript" charset="utf-8" src="resources/libraries/jqueryUI/jquery-ui-1.10.3.custom.min.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/transition.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/mustache.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/jquery.xml2json.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/dndFile.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/jszip.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/jszip-load.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/jszip-inflate.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/js64Encode.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="bootstrap/js/bootstrap.min.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="bootstrap/js/bootstrap-switch.min.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/ace/ace.js"></script>
+
+
+
+		<script type="text/javascript" charset="utf-8" src="js/jquery.layout.1.2.0.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/main.js"></script>
+	</body> 
+</html> 

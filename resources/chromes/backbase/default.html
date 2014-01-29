@@ -1,0 +1,20 @@
+<div data-pid="{{widgetInstanceId}}" class="bp-widget aa-widget bp-ui-dragRoot">
+	<div class="bp-widget-head aa-widget-head {{#enableDND}}bp-ui-dragGrip{{/enableDND}}">
+		<ul class="aa-widget-head-left">
+			<li class="aa-widget-head-left-list-item"><a data-action="widget-minimize" class="aa-chrome-button aa-button-minimize"><span class="aa-button-in"></span></a></li>
+		</ul>
+		<span class="aa-widget-head-center {{#enableDND}}aa-widget-head-draggable{{/enableDND}}">
+			{{widgetTitle}}
+		</span>
+		<ul class="aa-widget-head-right">
+			<li class="aa-widget-head-right-list-item"><a data-action="widget-preferences" data-fields="be.forms.Preferences.UserPreferenceField" data-form="be.portalClientExt.PortalManagerPreferencesForm" data-anim="be.animation.flipContainer" class="aa-chrome-button aa-button-preferences"><span class="aa-button-in"></span></a></li>
+            <!--<li class="aa-widget-head-right-list-item"><a data-action="widget-preferences" class="aa-chrome-button aa-button-preferences"><span class="aa-button-in"></span></a></li>-->
+			{{#showMaximize}}<li class="aa-widget-head-right-list-item"><a data-action="widget-maximize" class="aa-chrome-button aa-button-maximize"><span class="aa-button-in"></span></a></li>{{/showMaximize}}
+			<li class="aa-widget-head-right-list-item"><a data-action="widget-refresh" class="aa-chrome-button aa-button-refresh"><span class="aa-button-in"></span></a></li>
+			{{#showDelete}}<li class="aa-widget-head-right-list-item"><a data-action="widget-close" class="aa-chrome-button aa-button-close"><span class="aa-button-in"></span></a></li>{{/showDelete}}
+		</ul>
+	</div>
+	<div class="bp-widget-pref aa-widget-pref"></div>
+	<div class="bp-widget-body aa-widget-body">{{{widgetContent}}}</div>
+	<div class="bp-widget-foot aa-widget-foot"></div>
+</div>
